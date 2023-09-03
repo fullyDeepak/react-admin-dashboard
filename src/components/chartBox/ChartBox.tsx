@@ -40,10 +40,13 @@ export default function ChartBox(props: Props) {
                 contentStyle={{
                   backgroundColor: 'transparent',
                   border: 'none',
-                  color: '#ff0000',
                 }}
                 labelStyle={{ display: 'none' }}
+                position={{ x: 20, y: 50 }}
                 label={{ color: 'white' }}
+                itemStyle={{
+                  color: 'white',
+                }}
               />
             </LineChart>
           </ResponsiveContainer>
