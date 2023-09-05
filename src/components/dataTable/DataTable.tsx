@@ -3,7 +3,8 @@ import './datatable.scss';
 import { Link } from 'react-router-dom';
 import { PiEye } from 'react-icons/pi';
 import { MdDeleteOutline } from 'react-icons/md';
-
+import { useQueryClient, useMutation } from '@tanstack/react-query';
+const serverUrl = import.meta.env.VITE_BASE_URL;
 type Props = {
   columns: GridColDef[];
   rows: object[];
@@ -11,9 +12,20 @@ type Props = {
 };
 
 export default function DataTable(props: Props) {
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: (id: number) => {
+      return fetch(`${serverUrl}/api/${props.slug}/${id}`, {
+        method: 'delete',
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries([`all${props.slug}`]);
+    },
+  });
   const handleDelete = (id: number) => {
     //delete the id
-    console.log(`${id} has been deleted`);
+    mutation.mutate(id);
   };
 
   const actionColumn: GridColDef = {
