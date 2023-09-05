@@ -48,6 +48,7 @@ export default function StackedAreaChart(props: Props) {
             <Tooltip />
             {props.areaData.map((item) => (
               <Area
+                key={item.fill}
                 type='natural'
                 dataKey={item.dataKey}
                 stackId='1'

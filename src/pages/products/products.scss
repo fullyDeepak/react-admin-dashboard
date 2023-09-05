@@ -1,2 +1,22 @@
 .products {
+  .info {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    button {
+      padding: 0.5em 1.7em;
+      border: 0.16em solid rgba(255, 255, 255, 0);
+      background-color: rgb(110, 64, 169);
+      border-radius: 2em;
+      font-weight: 300;
+      color: #ffffff;
+      text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+      text-align: center;
+      transition: all 0.2s;
+      &:hover {
+        border-color: rgb(255, 255, 255);
+      }
+    }
+  }
 }
