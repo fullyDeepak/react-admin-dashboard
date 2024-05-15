@@ -12,13 +12,13 @@ export default function Navbar() {
   return (
     <div className='navbar'>
       <div className='logo'>
-        <FcCircuit />
+        <FcCircuit size={32} />
         <span>React Dashboard</span>
       </div>
       <div className='icons'>
-        <MdSearch />
-        <MdOutlineSpaceDashboard />
-        <RxEnterFullScreen />
+        <MdSearch className='icon' />
+        <MdOutlineSpaceDashboard className='icon' />
+        <RxEnterFullScreen className='icon' />
         <div className='notification'>
           <BsBell />
           <span>1</span>
@@ -27,7 +27,7 @@ export default function Navbar() {
           <PiUserCircleDuotone />
           <span>Deepak</span>
         </div>
-        <MdOutlineSettings />
+        <MdOutlineSettings className='icon' />
       </div>
     </div>
   );

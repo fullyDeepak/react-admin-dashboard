@@ -48,6 +48,7 @@ export default function DataTable(props: Props) {
   return (
     <div className='datatable'>
       <DataGrid
+        sx={{ width: '100%' }}
         className='dataGrid'
         rows={props.rows}
         columns={[...props.columns, actionColumn]}

@@ -22,6 +22,7 @@ type Props = {
 };
 
 export default function Single(props: Props) {
+  console.log(props);
   return (
     <div className='single'>
       <div className='view'>
@@ -35,7 +36,7 @@ export default function Single(props: Props) {
         <div className='detail'>
           {Object.entries(props.info).map((item) => (
             <div className='item' key={item[0]}>
-              <span className='itemTitle'>{item[0]}</span>
+              <span className='itemTitle'>{item[0]}:</span>
               <span className='itemValue'>{item[1]}</span>
             </div>
           ))}
@@ -60,13 +61,13 @@ export default function Single(props: Props) {
                 <Legend />
                 {props.chart.dataKeys.map((dataKey) => (
                   <Line
+                    key={dataKey.color[0]}
                     type='monotone'
                     dataKey={dataKey.name}
                     stroke={dataKey.color}
-                    activeDot={{ r: 8 }}
+                    // activeDot={{ r: 8 }}
                   />
                 ))}
-                <Line type='monotone' dataKey='uv' stroke='#82ca9d' />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -76,8 +77,8 @@ export default function Single(props: Props) {
         <h2>Activities</h2>
         {props.activities && (
           <ul>
-            {props.activities.map((activity) => (
-              <li>
+            {props.activities.map((activity, index) => (
+              <li key={index}>
                 <div>
                   <p>{activity.text}</p>
                   <time>{activity.time}</time>

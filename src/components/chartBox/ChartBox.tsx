@@ -4,7 +4,7 @@ import { ResponsiveContainer, LineChart, Line, Tooltip } from 'recharts';
 
 type Props = {
   color: string;
-  icon: string;
+  icon: React.ComponentType<{ size?: number }>;
   title: string;
   dataKey: string;
   number: string;
@@ -17,7 +17,7 @@ export default function ChartBox(props: Props) {
     <div className='chartbox'>
       <div className='boxInfo'>
         <div className='title'>
-          {<props.icon />}
+          {<props.icon size={28} />}
           <span>{props.title}</span>
         </div>
         <h1>{props.number}</h1>
@@ -27,8 +27,12 @@ export default function ChartBox(props: Props) {
       </div>
       <div className='chartInfo'>
         <div className='chart'>
-          <ResponsiveContainer width='99%' height='100%'>
-            <LineChart width={300} height={100} data={props.chartData}>
+          <ResponsiveContainer
+            width='99%'
+            height='100%'
+            minHeight={100}
+            minWidth={100}>
+            <LineChart data={props.chartData}>
               <Line
                 type='monotone'
                 dataKey={props.dataKey}
@@ -55,7 +59,7 @@ export default function ChartBox(props: Props) {
           <div
             className='percentage'
             style={{ color: props.percentage < 0 ? 'tomato' : 'limegreen' }}>
-            45%
+            {props.percentage}%
           </div>
           <div className='duration'>this months</div>
         </div>

@@ -11,7 +11,7 @@ export default function Menu() {
           {item.listItems.map((listItem) => (
             <Link to={listItem.url} className='listItem' key={listItem.id}>
               <listItem.iconComponent />
-              <span>{listItem.title}</span>
+              <span className='listItemTitle'>{listItem.title}</span>
             </Link>
           ))}
         </div>

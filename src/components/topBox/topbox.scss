@@ -1,7 +1,14 @@
+@import '../../styles/responsive.scss';
+
 .topbox {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @include xxl {
+    flex-direction: column;
+    font-size: 24px;
+  }
 
   .topDealsItem {
     display: flex;
@@ -17,6 +24,14 @@
       aspect-ratio: 1;
       object-fit: cover;
       border-radius: 50px;
+
+      @include xxl {
+        display: none;
+      }
+
+      @include lg {
+        display: block;
+      }
     }
     div {
       &:first-child {
@@ -32,6 +47,14 @@
           p {
             &:last-child {
               font-size: 12px;
+
+              @include xxl {
+                display: none;
+              }
+
+              @include lg {
+                display: block;
+              }
             }
           }
         }

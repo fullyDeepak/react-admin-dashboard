@@ -63,9 +63,14 @@ const columns: GridColDef[] = [
 export default function Users() {
   const [open, setOpen] = useState(false);
 
-  const { isLoading, data } = useQuery({
+  const { data, status } = useQuery({
     queryKey: ['allusers'],
-    queryFn: () => fetch(`${serverUrl}/api/users`).then((res) => res.json()),
+    queryFn: async () => {
+      const response = await fetch(`${serverUrl}/api/users`);
+      const data = await response.json();
+      return data;
+    },
+    retry: false,
   });
 
   return (
@@ -74,10 +79,12 @@ export default function Users() {
         <h1>Users</h1>
         <button onClick={() => setOpen(true)}>Add New User</button>
       </div>
-      {isLoading ? (
-        'Loading...'
-      ) : (
+      {status === 'loading' && 'Loading...'}
+      {status === 'success' && (
         <DataTable slug='users' columns={columns} rows={data} />
+      )}
+      {status === 'error' && (
+        <p>Error in data fetching...please check backend.</p>
       )}
       {open && <Add slug='user' columns={columns} setOpen={setOpen} />}
     </div>

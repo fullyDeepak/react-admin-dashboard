@@ -60,15 +60,13 @@ const columns: GridColDef[] = [
 export default function Products() {
   const [open, setOpen] = useState(false);
   return (
-    <div className='home'>
-      <div className='products'>
-        <div className='info'>
-          <h1>Products</h1>
-          <button onClick={() => setOpen(true)}>Add New Products</button>
-        </div>
-        <DataTable slug='products' columns={columns} rows={products} />
-        {open && <Add slug='products' columns={columns} setOpen={setOpen} />}
+    <div className='products'>
+      <div className='info'>
+        <h1>Products</h1>
+        <button onClick={() => setOpen(true)}>Add New Products</button>
       </div>
+      <DataTable slug='products' columns={columns} rows={products} />
+      {open && <Add slug='product' columns={columns} setOpen={setOpen} />}
     </div>
   );
 }

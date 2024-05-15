@@ -53,13 +53,13 @@ export const menu = [
       {
         id: 3,
         title: 'Orders',
-        url: '/orders',
+        url: '#',
         iconComponent: BsBoxSeam,
       },
       {
         id: 4,
         title: 'Posts',
-        url: '/posts',
+        url: '#',
         iconComponent: HiOutlineNewspaper,
       },
     ],
